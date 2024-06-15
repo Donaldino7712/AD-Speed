@@ -367,7 +367,7 @@ export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride
 
   factor *= PelleUpgrade.timeSpeedMult.effectValue.toNumber();
 
-  factor *= Math.clampMax((player.records.realTimePlayed / 1000) ** 1.01, Number.MAX_VALUE);
+  factor *= 1.01 ** (player.records.realTimePlayed / 1000);
   // 1e-300 is now possible with max inverted BH, going below it would be possible with
   // an effarig glyph.
   factor = Math.clamp(factor, 1e-300, 1e300);
